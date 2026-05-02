@@ -1,0 +1,13 @@
+# ─────────────────────────────────────────────────────────────────────
+# Amazon Product URLs — One per line
+# Lines starting with # are comments
+# ─────────────────────────────────────────────────────────────────────
+
+# ── Example URLs (replace with your actual book URLs) ───────────────
+# https://www.amazon.com/dp/B08N5WRWNW
+# https://www.amazon.com/dp/0735211299
+# https://www.amazon.com/dp/0399592520
+
+# ── Paste your URLs below this line ─────────────────────────────────
+https://www.amazon.com/dp/0062315005/ref=sspa_dk_rhf_search_pt_sub_0/?_encoding=UTF8&ie=UTF8&psc=1&sp_csd=d2lkZ2V0TmFtZT1zcF9yaGZfc2VhcmNoX3BlcnNvbmFsaXplZA%3D%3D&pd_rd_w=6gwGM&content-id=amzn1.sym.74b85f4a-bfbe-49a3-8252-7e9927a19318&pf_rd_p=74b85f4a-bfbe-49a3-8252-7e9927a19318&pf_rd_r=CTYAM6RGS7TGB5VAQSMV&pd_rd_wg=TuvEH&pd_rd_r=6fb016cb-a227-47dd-8442-3971c8c17300&ref_=sspa_dk_rhf_search_pt_sub
+https://www.amazon.com/Concise-Mastery-Robert-Greene-Collection/dp/1846681561/ref=sr_1_2?crid=3PSASA6ZKP500&dib=eyJ2IjoiMSJ9.8UTIIBrvKG0lZyEDnPyxtAALevzXJmPUo__QI5ZbplcdXoYQnBxLHTjxy6kHeE3cSBK467hl5H-4bvfDnz5tTcEGtWbuzbb7b9HmOpKi6E4KVK3bQbt_QIbIWGL32BIuLL8j1fzFnfqKk4HdK_AqEaQxF72oH5yjD3uQ6AKql3XFt-N100HM23LE84jarQb7SY4Ido7wHPwRxm3HeeoIa7QR877H1fAP6wU8JnMpxJY.l0OFd7S47PWoywwiuKGQqfU0aU3Lo1BFUxHG_xoNjos&dib_tag=se&keywords=mastery+robert+greene&qid=1777725239&s=books&sprefix=mastery+by+robert+%2Cstripbooks-intl-ship%2C870&sr=1-2
