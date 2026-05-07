@@ -126,3 +126,36 @@ downloads/
 - **For large batches (100+ books):** Use `--fast` mode but add a VPN/proxy rotation
 - **If images are missing:** Some books have DRM-protected viewer images — the agent gets everything accessible via the standard product page
 - **Resumable:** The agent skips already-downloaded images, so you can re-run safely
+
+---
+
+## 🤖 Optional Bot / API Mode
+
+If you want a Telegram bot or HTTP API on top of the same image sourcer, use the built-in server and bot modules.
+
+1. Create a `.env` file with at least:
+
+```env
+TELEGRAM_BOT_TOKEN=your_bot_token_here
+PORT=3456
+```
+
+2. Start the API server:
+
+```bash
+npm run server
+```
+
+3. Start the Telegram bot:
+
+```bash
+npm run bot
+```
+
+4. If you want stronger search matching, set:
+
+```env
+SEARCH_CONFIDENCE_THRESHOLD=0.8
+```
+
+> The bot/server features are optional. The primary CLI still runs from `npm start`.
