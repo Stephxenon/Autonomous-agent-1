@@ -39,13 +39,15 @@ async function searchAmazon(query, options = {}) {
   await applyStealthScripts(page);
 
   try {
-    // ── Build search URL with hardcover filter ─────────────────────
+    // ── Build search URL ───────────────────────────────────────────
     const searchTerms = encodeURIComponent(query);
-    // i=stripbooks = Books department
-    // rh=p_n_feature_browse-bin:2656022011 = Hardcover filter
-    const searchUrl = `https://www.amazon.com/s?k=${searchTerms}&i=stripbooks&rh=p_n_feature_browse-bin%3A2656022011`;
+    // Remove filters if requested
+    const useFilters = options.useFilters !== false;
+    const searchUrl = useFilters
+      ? `https://www.amazon.com/s?k=${searchTerms}&i=stripbooks&rh=p_n_feature_browse-bin%3A2656022011`
+      : `https://www.amazon.com/s?k=${searchTerms}`;
 
-    console.log(`🔍 Searching Amazon: "${query}"`);
+    console.log(`🔍 Searching Amazon: "${query}"${useFilters ? ' (with filters)' : ' (no filters)'}`);
     await page.goto(searchUrl, {
       waitUntil: 'domcontentloaded',
       timeout: config.navigationTimeout,

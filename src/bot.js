@@ -166,7 +166,7 @@ function createBot() {
     const statusMsg = await ctx.reply(`🔍 Searching Amazon for "${query}"...`);
 
     try {
-      const searchResult = await searchAmazon(query, { headless: true });
+      const searchResult = await searchAmazon(query, { headless: true, useFilters: false });
 
       if (searchResult.results.length === 0) {
         return ctx.api.editMessageText(

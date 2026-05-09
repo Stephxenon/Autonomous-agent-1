@@ -27,6 +27,15 @@ function initDB() {
   db.pragma('journal_mode = WAL');
 
   db.exec(`
+    CREATE TABLE IF NOT EXISTS pending_searches (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id TEXT NOT NULL,
+      query TEXT NOT NULL,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+    );
+
+    CREATE INDEX IF NOT EXISTS idx_pending_searches_user ON pending_searches(user_id);
+
     CREATE TABLE IF NOT EXISTS books (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       asin TEXT UNIQUE NOT NULL,
@@ -173,6 +182,41 @@ function getBook(asin) {
 }
 
 /**
+ * Get all pending searches that haven't been processed yet.
+ */
+function getPendingSearches(userId = null) {
+  const d = getDB();
+  if (userId) {
+    return d.prepare(`
+      SELECT * FROM pending_searches WHERE user_id = ? ORDER BY created_at ASC
+    `).all(userId);
+  }
+  return d.prepare(`
+    SELECT * FROM pending_searches ORDER BY created_at ASC
+  `).all();
+}
+
+/**
+ * Add a pending search to the queue.
+ */
+function addPendingSearch(userId, query) {
+  const d = getDB();
+  const result = d.prepare(`
+    INSERT INTO pending_searches (user_id, query)
+    VALUES (?, ?)
+  `).run(userId, query);
+  return { id: result.lastInsertRowid, userId, query };
+}
+
+/**
+ * Mark a pending search as processed.
+ */
+function removePendingSearch(searchId) {
+  const d = getDB();
+  d.prepare('DELETE FROM pending_searches WHERE id = ?').run(searchId);
+}
+
+/**
  * Close the database connection.
  */
 function closeDB() {
@@ -193,5 +237,8 @@ module.exports = {
   getHistory,
   getStats,
   getBook,
+  getPendingSearches,
+  addPendingSearch,
+  removePendingSearch,
   closeDB,
 };
